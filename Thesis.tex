@@ -1,0 +1,42 @@
+\documentclass[10pt, oneside, openright, listof=numbered, a4paper, numbers=noenddot, abstract=off, bibliography=numbered]{scrreprt}
+\usepackage{mathtools}
+
+%%% BUILD %%%
+%%% xelatex / pdflatex Seminar
+%%% bibtex Seminar
+%%% xelatex / pdflatex Seminar
+%%% xelatex / pdflatex Seminar
+%%% xelatex / pdflatex Seminar
+
+\include{include/preamble}
+
+\newcommand{\myAuthor}{Julius Gummersbach}
+\newcommand{\myMatriculationnumber}{114015019}
+\newcommand{\myTitle}{An Origami Continuum Robot Capable of Precise Motion Through Torsionally Stiff Body and Smooth Inverse Kinematics}
+%\newcommand{\mySubtitle}{Zweiter Teil des Beweises des Satzes von König} %%% COMMENT OUT IF THE THESIS HAS NO SUBTITLE
+\newcommand{\myFirstexaminer}{Prof. Wen-Chung Chang}
+\newcommand{\mySecondexaminer}{}
+\newcommand{\myStudylocation}{Taipei}
+\newcommand{\myThesistype}{Paper Report}
+
+\begin{document}
+\include{include/titlepage}
+
+
+
+% % % % % % % % % %  Titelei  % % % % % % % % % %
+\pagenumbering{roman} %% Roman page numbers in the table of contents
+\include{content/00-frontmatter/tableofcontents}
+
+% % % % % % % % % % Hauptteil % % % % % % % % % %
+\pagenumbering{arabic} %% Arabic page numbers from the first chapter onwards
+\include{content/01-mainmatter/einleitung}
+\include{content/01-mainmatter/hauptteil}
+%\include{content/01-mainmatter/schluss}
+
+% % % % % % % % % % Anhang % % % % % % % % % %
+%\appendix
+%\include{content/02-backmatter/appendix}
+%\include{content/02-backmatter/bibliography}
+%\include{content/02-backmatter/listoffigures}
+\end{document}

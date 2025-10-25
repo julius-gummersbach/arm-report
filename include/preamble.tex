@@ -1,0 +1,158 @@
+% !TeX root = Thesis.tex
+
+% % % % % % % % % % Packages % % % % % % % % % %
+\usepackage{cite}
+\usepackage{appendix}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{lmodern}
+\usepackage{framed}
+\usepackage[chapter]{algorithm}
+\usepackage{verbatim}
+\usepackage[english,ngerman]{babel} %% Deutsche Bezeichnungen im Dokument
+%\usepackage[ngerman,english]{babel} %% Englische Bezeichnungen im Dokument
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{a4wide}
+\usepackage[headsepline,footsepline]{scrlayer-scrpage}
+\usepackage{microtype}
+%\usepackage{fontspec} %% only if  using xelatex
+\usepackage{float}
+\usepackage[utf8]{inputenc}
+\usepackage{stringstrings}
+\usepackage{amsthm}
+\usepackage[most]{tcolorbox}
+\usepackage{prettyref}
+\usepackage[margin=2.5cm, includefoot]{geometry}
+
+\newtcbtheorem[auto counter,number within=chapter]{definitionbox}%
+{Definition}{fonttitle=\bfseries\upshape, fontupper=\slshape,
+    arc=0mm, colback=black!5!white,colframe=black!75!white}{definition}
+
+\newtcbtheorem[auto counter,number within=chapter]{lemmabox}%
+{Lemma}{fonttitle=\bfseries\upshape, fontupper=\slshape,
+    arc=0mm, colback=blue!5!white,colframe=blue!75!black}{lemma}
+
+\newtcbtheorem[auto counter,number within=chapter]{satzbox}%
+{Satz}{fonttitle=\bfseries\upshape, fontupper=\slshape,
+    arc=0mm, colback=red!5!white,colframe=red!75!black}{satzbox}
+
+\newrefformat{lemma}{Lemma~\ref{#1}}
+\newrefformat{sec}{Abschnitt~\ref{#1}}
+\newrefformat{subsec}{Abschnitt~\ref{#1}}
+\newrefformat{definition}{Definition~\ref{#1}}
+\newrefformat{fig}{Abbildung~\ref{#1}}
+\newrefformat{cap}{Kapitel~\ref{#1}}
+
+% % % % % % % % % % oft verwendete Farben % % % % % % % % % %
+\definecolor{black}{rgb}{0,0,0}
+\definecolor{darkgrey}{rgb}{.4,.4,.4}
+\definecolor{grey}{rgb}{.7,.7,.7}
+\definecolor{white}{rgb}{1,1,1}
+
+\definecolor{blue}{rgb}{0,0,1}
+\definecolor{red}{rgb}{1,0,0}
+\definecolor{green}{rgb}{0,1,0}
+
+\definecolor{midblue}{rgb}{0,0,.7}
+\definecolor{midred}{rgb}{.7,0,0}
+\definecolor{midgreen}{rgb}{0,.7,0}
+
+\definecolor{darkblue}{rgb}{0,0,.4}
+\definecolor{darkred}{rgb}{.4,0,0}
+\definecolor{darkgreen}{rgb}{0,.4,0}
+
+\definecolor{orange}{rgb}{1,.4,0}
+\definecolor{cyan}{rgb}{0,1,.8}
+\definecolor{purple}{rgb}{.6,0,.6}
+\definecolor{lavender}{rgb}{.6,.6,1}
+\definecolor{yellow}{rgb}{1,.8,.2}
+
+
+
+% % % % % % % % % %  RWTH Colors % % % % % % % % % %  
+\definecolor{rwthgrey75}{RGB}{100,101,103}
+\definecolor{rwthgrey50}{RGB}{156,158,159}
+\definecolor{rwthgrey25}{RGB}{207,209,210}
+\definecolor{rwthgrey10}{RGB}{236,237,237}
+
+\definecolor{rwthblue100}{HTML}{00549F}
+\definecolor{rwthblue75}{HTML}{407FB7}
+\definecolor{rwthblue50}{HTML}{8EBAE5}
+\definecolor{rwthblue25}{HTML}{C7DDF2}
+\definecolor{rwthblue10}{HTML}{E8F1FA}
+
+% % % % % % % % % %  FH, IT Center and MATSE Colors % % % % % % % % % % 
+\definecolor{fhgreen}{HTML}{00B1AC}
+\definecolor{itcorange}{HTML}{F6A800}
+\definecolor{matseblue}{HTML}{00549F}
+
+
+% % % % % % % % % %  Farboptionen % % % % % % % % % % 
+%% Screen ist bunt, Print ist schwarz. Passendes einkommentieren.
+
+% Screen
+\hypersetup{
+  pdftitle={Ausarbeitung},
+  pdfauthor={Julius Gummersbach, 3516621},
+  pdfsubject={Matchings und Knotenüberdeckung : Zweiter Teil des Beweises des Satzes von König},
+  colorlinks=true,
+  linkcolor=midblue,
+  citecolor=midgreen,
+  urlcolor=midred
+}
+
+% Print
+%\hypersetup{
+%  pdftitle={Seminararbeit},
+%  pdfauthor={Name, Matrikelnummer},
+%  pdfsubject={Titel der Arbeit},
+%  colorlinks=true,
+%  linkcolor=black,
+%  citecolor=black,
+%  urlcolor=black
+%}
+
+% % % % % % % % % %  Kopf- und Fußzeile % % % % % % % % % % 
+\pagestyle{plain}
+\automark[section]{chapter}
+\cfoot{\vspace{3pt}\phantom{ }}
+
+
+% % % % % % % % % %  Umgebung für Beispiele % % % % % % % % % % 
+\newlength{\leftbarwidth}
+\setlength{\leftbarwidth}{1pt}
+\newlength{\leftbarsep}
+\setlength{\leftbarsep}{10pt}
+\newlength{\leftbarheight}
+\setlength{\leftbarheight}{10pt}
+
+\newcommand*{\leftbarcolorcmd}[1]{\color{#1}}% as a command to be more flexible
+
+
+%%% Useful for marking examples, which are inserted into the text. Usage see below.
+\newenvironment{example}[1][black]{%
+    \def\FrameCommand{{\leftbarcolorcmd{#1}{\hspace{3pt}  \vrule width \leftbarwidth \relax\hspace {\leftbarsep}}}}%
+    \MakeFramed {\vspace{2pt} \advance \hsize -\width \FrameRestore }%
+\vspace{-0.5em}}{ %
+    \vspace{2pt} \endMakeFramed
+}
+
+\renewenvironment{leftbar}[1][black]{%
+    \def\FrameCommand{{\leftbarcolorcmd{#1}{\hspace{3pt}  \vrule width \leftbarwidth \relax\hspace {\leftbarsep}}}}%
+    \MakeFramed {\vspace{2pt} \advance \hsize -\width \FrameRestore }%
+\vspace{-1.5em}}{ %
+    \vspace{2pt} \endMakeFramed
+}
+
+% % % % % % % % % %  Generelle Einstellungen im Dokument % % % % % % % % % % 
+\setlength{\parindent}{0pt}
+
+
+% % % % % % % % % %  Eigene Kommandos % % % % % % % % % %
+\newcommand\forceblankpage{\newpage\thispagestyle{empty}\phantom{ }\newpage}
+
+% % % % % % % % % %  Einstellungen KOMA-Script % % % % % % % % % % 
+\KOMAoptions{cleardoublepage=empty, parskip=half}

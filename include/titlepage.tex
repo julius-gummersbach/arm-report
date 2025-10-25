@@ -1,0 +1,44 @@
+% !TeX root = Thesis.tex
+
+% % % % % % % % % %  Titelseite % % % % % % % % % % 
+
+\begin{titlepage}
+    \vspace*{-2.66cm}
+    \hspace{16.75cm}
+    \includegraphics[height=48mm]{images/fhac}\\[1cm]
+    \begin{center}
+    
+    \textsc{\LARGE Fachochschule Aachen}\\[0.5cm]
+    \textsc{\large Fachbereich 05 - Elektrotechnik und Informationstechnik}\\
+    \textsc{\large Studiengang M. Sc. Informatik}\\[1.5cm]
+    
+    \textsc{\Large \myThesistype}\\[0.5cm]
+    
+    
+    % Title
+    \newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+    \HRule \\[0.5cm]
+    { \huge \bfseries \myTitle}\\[0.2cm]
+    \ifdefined\mySubtitle { \vspace{0.3cm} \large \bfseries \mySubtitle}\\[0.2cm] \fi
+    
+    \HRule \\[1.5cm]
+    
+    % Author and supervisor
+    \begin{flushleft} \large
+    \emph{Autor:}\\
+    \myAuthor, \myMatriculationnumber\\[2em]
+    \emph{Betreuer:} \\
+    \myFirstexaminer\\
+    \mySecondexaminer
+    \end{flushleft}
+    
+    \vfill
+    
+    % Unterer Teil der Seite
+    {\large \myStudylocation, \today}
+    
+    \end{center}
+    
+\end{titlepage}
+\newpage
+\cleardoublepage
