@@ -4,11 +4,11 @@
 
 precision main problem with continuum robots (maybe nochmal einleitung anpassen)
 The authors identify the missing torsional twist-resistance as one of the key causes for this precision loss.
-they... designed...passive resistance because continuum dont have active \cite{santoso_origami_2021}
+they... designed...passive resistance because continuum dont have active\cite{main}
 
 Authors chose origami because: can be created from simple sheet of material which makes its production low-cost.
 Also lightweight, adaptable.
-Not new, has been done: \cite{rus_design_2018}
+Not new, has been done:\cite{rus_design_2018}
 
 For the body, the authors designed a custom modification of the ``Yoshimura'' origami pattern.
 A laser-cutter was used to cut the required shapes out of a\ \ac{pet} film, while perforating the lines along which the film was to be folded later.
@@ -21,14 +21,47 @@ For an even more in-depth look into the construction of the modules, the authors
 The resulting construction is a modular robot arm capable of changing its length to 125\% its contracted length. % todo checken ob
 Since each module can bend in any direction, the composed robot arm is capable of complex motion, as the authors demonstrate later in their paper (see\ \prettyref{ch:areas-of-application-strengths-and-weaknesses}).
 The authors measured the torsional stiffness to be about 73 times higher than in a similar soft robot made of silicone, which they call remarkable for its low mass.
-
-
+Furthermore, they executed a stress-test on the origami-construction, which involved repeated compression and decompression.
+After 1000 cycles they observed a maximum reduction in the axial stiffness of $3.14\%$, from which they concluded ``that no significant degradation due to plastic deformation is present''\cite{main}.
+Even though this reduction might indeed be insignificant for testing the robot in a lab environment without problems, the same might not be true for a real-world application, in which the robot might experience for more than 1000 cycles of (de)compression.
+The authors did, however, not mention any additional research concerning the long-term deployment of the used material and origami-structure, which might be a research gap for future work.
 
 modularity: scalable, replaceable,
 
 \chapter{Kinematics}\label{ch:kinematics}
 
-The authors describe the inverse kinematics solution for continuum robots to be very complex because of the ``highly nonlinear nature of hyper-redundant continuum robots''.
+The authors describe the inverse kinematics solution for continuum robots to be very complex because of the ``highly nonlinear nature of hyper-redundant continuum robots''\cite{main}.
+Because of this, they claim that there is ``no closed-form solution for the inverse kinematics of a multi-section continuum robot''\cite{main}.
 They build on previously conducted research on the topic\cite{neppalli_closed-form_2009,george_thuruthel_learning_2016,lakhal_inverse_2014,singh_performances_2017}, improving and combining different approaches to create a
+
+aus 44:
+tendon lengths -> arc length, bending angle, bending direction, lots of sin and cos -> Jacobian intense to compute (via part. deriviatives).
+Instead, use Taylor series for part. der. determine jacobian like that
+
+with this forward kin, a damped least-squares jacobian was constructed
+
+because highly redundant, many possible solutions (tendon lengths), cost function as additional criteria is used to find best of the applicable solutions.
+candidates:
+1. pose error (as per default for iterative inverse kinematics)
+2. module curvature
+3. change in cable lengths (minimize shape-change)
+
+3 takes the crown after thorough evaluation, because it yielded by far the smoothest results while being just insignificantly slower to compute than 2.
+
+
+Because the mathematical model of a robot is never perfect, and this is especially true for a soft-robot whose pose is significantly affected by a hand-assembled origami structure, a feedback-control mechanism was deemed to be imperative by the authors\cite{main}.
+For this, they used an external OptiTrack\footnote{\href{https://optitrack.com}{https://optitrack.com}} system.
+This system tracks the position of small infra-red reflectors on the robot using specialized infra-red cameras that are mounted at fixed, known positions around the robot.
+The authors stress that this solution is only suited for a lab environment and would need to be replaced by an on-board pose tracking system, should the robot ever be deployed in the field.
+Until then, however, the presented solution enabled the authors to combine the iterative inverse kinematics approach with the feedback control provided by the tracking solution to ``drive the system to zero error in configuration space''\cite{main}.
+Furthermore, with this approach ``the robot was able to traverse in a straight line while maintaining the top plate parallel to the ground [\ldots]. The feedback is able to reduce the error about 5-fold for position and 2.5-fold for orientation tracking''\cite{main}.
+
+Because of the cost function used (minimize change in tendon lengths), the robot is already expected to avoid drastic changes in position if not necessary.
+However, to deploy a robot of this kind in an area like minimal-invasive surgeries, as suggested by the authors\cite{main}, such changes in position would need to be minimized.
+The ``grow-to-shape'' algorithm presented in the paper might be a solution to this challenge.
+It uses the length-changing capabilities of the presented robot to let it extend along a given path.
+To achieve this, each module is discretized into $10$ points, whose deviation from corresponding points on the desired path is then used as an error function in the inverse kinematics computation.
+This approach was tested by the authors in the paper and yielded satisfying results.
+One could imagine it being used to transport a surgical tool-tip or camera to a specific location in an organism, while avoiding blood vessels or organs.
 
 \chapter{Areas of Application, Strengths and Weaknesses}\label{ch:areas-of-application-strengths-and-weaknesses}
