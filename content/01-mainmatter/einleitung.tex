@@ -12,6 +12,7 @@ This report gives an overview of the paper ``An Origami Continuum Robot Capable 
 
 In the paper\cite{santoso_origami_2021}, the authors present a continuum robot arm that consists of multiple, modular segments.
 Each segment is made of two triangular plates connected through an accordion-like origami fold.
+An illustration of a continuum robotic arm can be seen in\ \prettyref{fig:arm}.
 The authors chose this technique of construction, because it tackles what they identified to be the main cause for reduced precision in related work: low torsional twist-resistance, that is resistance to twisting forces around the central axis of the arm.
 The origami-fold used provides this stiffness, while at the same time acting as a spring to drive the two end-plates apart, therefore enabling the robot arm to change its length.
 Each segment is actuated by three motors installed on one of the two plates, which pull on cables that run through the origami-fold and are fixed to corresponding points on the other plate.
@@ -23,3 +24,10 @@ Although it is clear that the robot presented in the paper is not ready for depl
 This report will first go into more detail on the construction of the robot arm.
 After that, the kinematics used to control the robot will be presented, as well as the implemented feedback-control.
 Finally, various areas of application, as well as the strengths and weaknesses of the presented design, will be discussed.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.3\textwidth]{images/robot}
+    \caption{A continuum robotic arm as presented in the paper, consiting of $3$ modules\cite{santoso_origami_2021}.}
+    \label{fig:arm}
+\end{figure}

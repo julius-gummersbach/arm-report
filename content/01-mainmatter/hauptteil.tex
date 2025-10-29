@@ -12,16 +12,32 @@ Origami constructions come with the advantage that they can be created by hand f
 At the same time they are lightweight and compliant to a degree that can be adjusted by the folding technique used.
 This approach for designing soft robots is not new, an overview of previous works can be found in\cite{rus_design_2018}, as the authors point out\cite{santoso_origami_2021}.
 
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\textwidth]{images/origami}
+    \caption{Manufacturing process of the origami-tube\cite{santoso_origami_2021}}
+    \label{fig:origami}
+\end{figure}
+
 For the body, the authors designed a custom modification of the ``Yoshimura'' origami pattern.
 A laser-cutter was used to cut the required shapes out of a\ \ac{pet} film, while perforating the lines along which the film was to be folded later.
+Pictures of the manufacturing process of the origami-tubes can be seen in\ \prettyref{fig:origami}
 The origami-tube is assembled by hand and connected to two end-plates, one of which contains a custom-build\ \ac{pcb} that receives instructions from the previous module (or the PC) and executes them, while also passing them on to the next module via wires that run through the center of the origami tube.
 The end-plate of one module can be secured to the\ \ac{pcb} of the next, which also transfers power and data via the aforementioned wires.
 On top of each\ \ac{pcb} sit three small electric motors which actuate cables that run through the walls of the origami tube and are secured to the end-plate.
 It by pulling on these cables, that the segments of the arm can be bent in any direction.
 For an even more in-depth look into the construction of the modules, the authors refer to the preceding work\cite{santoso_design_2017}.
 
-The resulting construction is a modular robot arm capable of changing its length to 125\% its contracted length. % todo checken ob
-Since each module can bend in any direction, the composed robot arm is capable of complex motion, as the authors demonstrate later in their paper (see\ todo). %todo
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{images/blueprint}
+    \caption{Blueprint of an arm-module\cite{santoso_origami_2021}}
+    \label{fig:blueprint}
+\end{figure}
+
+The resulting construction is visualized in\ \prettyref{fig:blueprint}.
+It is a modular robot arm capable of changing its length to 125\% its contracted length. % todo checken ob
+Since each module can bend in any direction, the composed robot arm is capable of complex motion, as the authors demonstrate later in their paper (see\ \prettyref{sec:grow-to-shape}).
 The authors measured the torsional stiffness to be about 73 times higher than in a similar soft robot made of silicone, which they call remarkable for its low mass.
 Furthermore, they executed a stress-test on the origami-construction, which involved repeated compression and decompression.
 After 1000 cycles they observed a maximum reduction in the axial stiffness of $3.14\%$, from which they concluded ``that no significant degradation due to plastic deformation is present''\cite{santoso_origami_2021}.
@@ -61,7 +77,14 @@ For this, they used an external OptiTrack\footnote{\href{https://optitrack.com}{
 This system tracks the position of small infra-red reflectors on the robot using specialized infra-red cameras that are mounted at fixed, known positions around the robot.
 The authors stress that this solution is only suited for a lab environment and would need to be replaced by an on-board pose tracking system, should the robot ever be deployed in the field.
 Until then, however, the presented solution enabled the authors to combine the iterative inverse kinematics approach with the feedback control provided by the tracking solution to ``drive the system to zero error in configuration space''\cite{santoso_origami_2021}.
-Furthermore, with this approach ``the robot was able to traverse in a straight line while maintaining the top plate parallel to the ground [\ldots]. The feedback is able to reduce the error about 5-fold for position and 2.5-fold for orientation tracking''\cite{santoso_origami_2021}.
+Furthermore, with this approach ``the robot was able to traverse in a straight line while maintaining the top plate parallel to the ground [see\ \prettyref{fig:move}] [\ldots]. The feedback is able to reduce the error about 5-fold for position and 2.5-fold for orientation tracking''\cite{santoso_origami_2021}.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{images/move}
+    \caption{the robot traversing in a straight line while maintaining the top plate parallel to the ground using feedback control\cite{santoso_origami_2021}}
+    \label{fig:move}
+\end{figure}
 
 
 \section{Grow-To-Shape}\label{sec:grow-to-shape}
@@ -72,4 +95,12 @@ The ``grow-to-shape'' algorithm presented in the paper might be a solution to th
 It uses the length-changing capabilities of the presented robot to let it extend along a given path.
 To achieve this, each module is discretized into $10$ points, whose deviation from corresponding points on the desired path is then used as an error function in the inverse kinematics computation.
 This approach was tested by the authors in the paper and yielded satisfying results.
+The robot growing to a predetermined s-shape can be seen in\ \prettyref{fig:grow}, for more test-casese see\ \prettyref{fig:insert}.
 One could imagine it being used to transport a surgical tool-tip or camera to a specific location in an organism, while avoiding blood vessels or organs.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{images/grow}
+    \caption{The robot growing to a predetermined s-shape\cite{santoso_origami_2021}}
+    \label{fig:grow}
+\end{figure}
