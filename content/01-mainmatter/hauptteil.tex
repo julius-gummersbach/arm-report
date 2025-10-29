@@ -2,13 +2,13 @@
 
 \chapter{Construction of the Origami Robot}\label{ch:construction-of-the-origami-robot}
 
-precision main problem with continuum robots (maybe nochmal einleitung anpassen)
-The authors identify the missing torsional twist-resistance as one of the key causes for this precision loss.
-they... designed...passive resistance because continuum dont have active\cite{main}
-
-Authors chose origami because: can be created from simple sheet of material which makes its production low-cost.
-Also lightweight, adaptable.
-Not new, has been done:\cite{rus_design_2018}
+The authors identified precision to be the main current challenge for continuum robot arms\cite{main}.
+They claim that missing torsional twist-resistance is one of the key causes for this precision loss.
+Therefore, designing the robot, they focused on a construction with inherent passive torsional twist-resistance.
+For this, an origami construction was chosen.
+Origami constructions come with the advantage that they can be created by hand from sheets of readily-available materials like paper or plastic which makes their production low-cost.
+At the same time they are lightweight and compliant to a degree to a degree that can be adjusted by the folding technique used.
+This approach for designing soft robots is not new, an overview of previous works can be found in\cite{rus_design_2018}, as the authors point out\cite{main}.
 
 For the body, the authors designed a custom modification of the ``Yoshimura'' origami pattern.
 A laser-cutter was used to cut the required shapes out of a\ \ac{pet} film, while perforating the lines along which the film was to be folded later.
@@ -32,22 +32,25 @@ modularity: scalable, replaceable,
 
 The authors describe the inverse kinematics solution for continuum robots to be very complex because of the ``highly nonlinear nature of hyper-redundant continuum robots''\cite{main}.
 Because of this, they claim that there is ``no closed-form solution for the inverse kinematics of a multi-section continuum robot''\cite{main}.
-They build on previously conducted research on the topic\cite{neppalli_closed-form_2009,george_thuruthel_learning_2016,lakhal_inverse_2014,singh_performances_2017}, improving and combining different approaches to create a
+They build on previously conducted research on the topic\cite{neppalli_closed-form_2009,george_thuruthel_learning_2016,lakhal_inverse_2014,singh_performances_2017}, improving and combining different approaches to create an inverse kinematics solver using a damped least-squares jacobian.
 
-aus 44:
-tendon lengths -> arc length, bending angle, bending direction, lots of sin and cos -> Jacobian intense to compute (via part. deriviatives).
-Instead, use Taylor series for part. der. determine jacobian like that
+Refering to\cite{godage_modal_2015}, for the forward kinematics, they calculated the arc length, bending angle and direction from the tendon lengths, which could then yield the end-plate position for the given segment.
+However, as\cite{godage_modal_2015} remarks as well, computing a Jacobian matrix via partial derivatives from this approach is very computationally intense.
+Instead, still following\cite{godage_modal_2015}, the authors of the paper used a $10$th-degree Taylor Series for the derivatives.
+Having solved the forward-kinematics problem like this, the authors used a damped least-squares Jacobian to iteratively solve the inverse-kinematics problem.
 
-with this forward kin, a damped least-squares jacobian was constructed
+Because of the highly redundant nature of the continuum robot arm, there are many possible solutions, aka tendon lengths, to achieve a desired tip position.
+However, many factors apart from the final tip position are to be considered when controlling any robot.
+Therefore, the authors proposed three different cost functions.
+These cost functions were used as additional criteria to find best of the applicable solutions.
 
-because highly redundant, many possible solutions (tendon lengths), cost function as additional criteria is used to find best of the applicable solutions.
-candidates:
-1. pose error (as per default for iterative inverse kinematics)
-2. module curvature
-3. change in cable lengths (minimize shape-change)
+\begin{enumerate}
+    \item pose error
+    \item module curvature
+    \item change in tendon cable lengths
+\end{enumerate}
 
-3 takes the crown after thorough evaluation, because it yielded by far the smoothest results while being just insignificantly slower to compute than 2.
-
+After an in-depth analysis, measuring the computational speed and motion-smoothness of each cost function, the authors concluded that cost function $3$ was best suited, because it yielded by far the smoothest results while being just insignificantly slower to compute than 2.
 
 Because the mathematical model of a robot is never perfect, and this is especially true for a soft-robot whose pose is significantly affected by a hand-assembled origami structure, a feedback-control mechanism was deemed to be imperative by the authors\cite{main}.
 For this, they used an external OptiTrack\footnote{\href{https://optitrack.com}{https://optitrack.com}} system.
