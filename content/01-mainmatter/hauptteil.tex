@@ -2,6 +2,33 @@
 
 \chapter{Construction of the Origami Robot}\label{ch:construction-of-the-origami-robot}
 
+precision main problem with continuum robots (maybe nochmal einleitung anpassen)
+The authors identify the missing torsional twist-resistance as one of the key causes for this precision loss.
+they... designed...passive resistance because continuum dont have active \cite{santoso_origami_2021}
+
+Authors chose origami because: can be created from simple sheet of material which makes its production low-cost.
+Also lightweight, adaptable.
+Not new, has been done: \cite{rus_design_2018}
+
+For the body, the authors designed a custom modification of the ``Yoshimura'' origami pattern.
+A laser-cutter was used to cut the required shapes out of a\ \ac{pet} film, while perforating the lines along which the film was to be folded later.
+The origami-tube is assembled by hand and connected to two end-plates, one of which contains a custom-build\ \ac{pcb} that receives instructions from the previous module (or the PC) and executes them, while also passing them on to the next module via wires that run through the center of the origami tube.
+The end-plate of one module can be secured to the\ \ac{pcb} of the next, which also transfers power and data via the aforementioned wires.
+On top of each\ \ac{pcb} sit three small electric motors which actuate cables that run through the walls of the origami tube and are secured to the end-plate.
+It by pulling on these cables, that the segments of the arm can be bent in any direction.
+For an even more in-depth look into the construction of the modules, the authors refer to the preceeding work\cite{santoso_design_2017}.
+
+The resulting construction is a modular robot arm capable of changing its length to 125\% its contracted length. % todo checken ob
+Since each module can bend in any direction, the composed robot arm is capable of complex motion, as the authors demonstrate later in their paper (see\ \prettyref{ch:areas-of-application-strengths-and-weaknesses}).
+The authors measured the torsional stiffness to be about 73 times higher than in a similar soft robot made of silicone, which they call remarkable for its low mass.
+
+
+
+modularity: scalable, replaceable,
+
 \chapter{Kinematics}\label{ch:kinematics}
+
+The authors describe the inverse kinematics solution for continuum robots to be very complex because of the ``highly nonlinear nature of hyper-redundant continuum robots''.
+They build on previously conducted research on the topic\cite{neppalli_closed-form_2009,george_thuruthel_learning_2016,lakhal_inverse_2014,singh_performances_2017}, improving and combining different approaches to create a
 
 \chapter{Areas of Application, Strengths and Weaknesses}\label{ch:areas-of-application-strengths-and-weaknesses}
