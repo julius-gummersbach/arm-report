@@ -2,17 +2,18 @@
 
 \chapter{Introduction}\label{ch:introduction}
 
-\section{Soft Robotics}\label{sec:soft-robotics}
+% \section{Soft Robotics}\label{sec:soft-robotics}
 
+% todo read https://www.researchgate.net/publication/311479970_Soft_robotics_Technologies_and_systems_pushing_the_boundaries_of_robot_abilities once fulltext is granted
 
-\section{Overview of the paper}\label{sec:overview-of-the-paper}
+% \section{Overview of the paper}\label{sec:overview-of-the-paper}
 
 This report gives an overview of the paper ``An Origami Continuum Robot Capable of Precise Motion Through Torsionally Stiff Body and Smooth Inverse Kinematics'' by Junius Santoso and Cagdas D. Onal from the Worcester Polytechnic Institute in Massachusetts\cite{santoso_origami_2021}.
 
 In the paper\cite{santoso_origami_2021}, the authors present a continuum robot arm that consists of multiple, modular segments.
 Each segment is made of two triangular plates connected through an accordion-like origami fold.
-The origami-fold acts as a spring to drive the two end-plates apart and enables the robot arm to change its length, while providing a great amount of torsional stiffness, that is resistance to twisting forces around the central axis of the arm, at the same time.
-This torsional stiffness is presented by the authors as one of the main advancements compared to similar robots.
+The authors chose this technique of construction, because it tackles what they identified to be the main cause for reduced precision in related work: low torsional twist-resistance, that is resistance to twisting forces around the central axis of the arm.
+The origami-fold used provides this stiffness, while at the same time acting as a spring to drive the two end-plates apart, therefore enabling the robot arm to change its length.
 Each segment is actuated by three motors installed on one of the two plates, which pull on cables that run through the origami-fold and are fixed to corresponding points on the other plate.
 By pulling on these cables, each segment can curve in any direction.
 Multiple segments can be chained together and achieve complex motions in 3d-space.
@@ -20,5 +21,5 @@ The authors proposed minimally invasive surgery\cite{cianchetti_soft_2014}, reha
 Although it is clear that the robot presented in the paper is not ready for deployment in any of these areas, the paper proposes improvements over previously presented continuum robot arms that take the state-of-the-art closer to such a real-world deployment.
 
 This report will first go into more detail on the construction of the robot arm.
-After that, the kinematics used to control the robot will be presented.
-Finally, various areas of application, as well as the strengths and weaknesses of the robot arm, will be discussed.
+After that, the kinematics used to control the robot will be presented, as well as the implemented feedback-control.
+Finally, various areas of application, as well as the strengths and weaknesses of the presented design, will be discussed.

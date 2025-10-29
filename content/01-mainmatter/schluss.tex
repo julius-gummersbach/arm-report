@@ -2,16 +2,44 @@
 
 \chapter{Conclusion}\label{ch:conclusion}
 
-\section{Areas of Application, Strengths and Weaknesses}\label{sec:areas-of-application-strengths-and-weaknesses}
+\section{Areas of Application, Strengths}\label{sec:areas-of-application-strengths-and-weaknesses}
+
+The authors propose various areas of application for future robots of similar properties as the presented robot\cite{santoso_origami_2021}.
+
+\begin{itemize}
+    \item Because of its shape, the robot may enter into treacherous terrain through small gaps, a property that might prove valuable for search-and-rescue or scouting applications.
+    \item For the same reason, the robot may also enter into bodies during surgery, providing access to inner areas of the body without the need for big cuts.
+    \item The authors also suggest flexible appendages as a use case, probably talking about affordable prosthetics, whose compliant nature would make them more pleasant for human interaction.
+\end{itemize}
+
+Many more use-cases could be imagined.
+
+% habe ich ja eigentlich schon alles oben:
+% In addition to the strengths mentioned above, the authors also point out the affordability and modularity of the robot, which allow for easy replacement of broken modules and flexibility in the number of modules used.
+% Furthermore, they claim that because of the compliance of the origami-material, the robot is safer to use around humans than a traditional, all-metal robotic arm.
 
 
-\section{Future Work}\label{sec:future-work}
+\section{Future Work and Weaknesses}\label{sec:future-work-and-weaknesses}
 
-Pushing force? traversing through air in video, but what about friction resistance in application? snake/worm motion?
-They say did it like this to reduce weight
+The authors mention the following weaknesses in the proposed design (among others):
 
-As the authors point out themselves, not a lot of research was put into determining the ideal geometric parameters for the origami-fold.
-It might be beneficial for future work to investigate if other geometric parameters yield even better results in terms of extension, torsional twist resistance or spring force.
+\begin{itemize}
+    \item The pushing force of the current design is very low due to the matrials used, which limits the ability of the robot to push objects (as opposed to pulling, which it is much more capable of).
+    \item Not a lot of research was put into determining the ideal geometric parameters for the origami-fold. It might be beneficial for future work to investigate if other geometric parameters yield even better results in terms of extension, torsional twist resistance or the aforementioned spring force.
+    \item The authors also suggest the implementation of a different solution with adjustable stiffness, to open additional areas of application.
+    \item To deploy the robot in the field, the OptiTrack Feedback-Control solution would need to be replaced by an internal sensing solution that can move with the robot.
+    \item An internal power-source and wireless transmission of control signals would need to be implemented for deployment in the field.
+\end{itemize}
+
+In addition to the weaknesses pointed out by the authors, the following considerations come to mind to the reader:
+
+\begin{itemize}
+    \item The compliance of the materials used could prove to be a double-edged sword. Compliant materials are less robust than metal, which is one of their main selling points, but it might make the robot unusuable in areas with a lot of sharp edges, like collapsed buildings.
+    \item The current design would need to be water-proofed if used in search-and-rescue, this might be tricky if the origami-pattern leaves gaps between the materials.
+    \item The authors mention the challenge of pushing objects with the proposed design because of the low spring force. Even more pressing seems to be the question, if the robot can even push itself. All of the demonstrations in the paper have the robot moving through the air while attached to a fixed base, but if a worm- or snake-like motion is to be achieved (as implied by the authors), the robot would need to overcome the friction with the ground.
+\end{itemize}
+
+It is the task of future work by the same or different authors, to research solutions to these problems in order to bring the idea of the continuum robotic arm to life, with all the aforementioned, promising strengths and areas of application.
 
 
 \section{Comment}\label{sec:comment}
@@ -19,8 +47,8 @@ It might be beneficial for future work to investigate if other geometric paramet
 Though the thought of a small worm-like robot that enters a human body to perform a life-saving operation seems like Sci-Fi (and surely Sci-Fi authors would come up with much more terrifying use-cases than this), to me this is not the most interesting aspect of this paper.
 Technology has always taken inspiration from nature.
 The bigger innovation, in my opinion, is the use of compliant materials, in this case origami-folded plastic, in areas that previously didn't accommodate them.
-As pointed out earlier, this innovation can not be accredited to the authors of this very paper specifically, it has been around for a longer time and as it is so often the case is the result of the effort of a larger scientific community.
+As pointed out earlier, this innovation can not be accredited to the authors of this very paper specifically, it has been around for a longer time and, as it is so often the case, is the result of the effort of a larger scientific community.
 But it is this effort that the authors of this paper are contributing to.
-Through the use of the origami-pattern, the stiffness of the plastic-sheet is redirected into a spring force, without using a traditional spring which is much more expensive in material, energy and expertise to produce.
+Through the use of the origami-pattern, the inherent stiffness of the plastic-sheet is redirected into a spring force, without using a traditional spring, which is much more expensive in material, energy and expertise to produce.
 It is through exploring new approaches to old problems like this, that we can find more sustainable solutions that are also accessible to more people that need them.
-That is, as long as the affordability doesn't infer the unpleasant side effect of leading to the production of one-time-use disposable robots that are more expensive to recycle than to produce.
+That is, as long as the affordability doesn't infer the unpleasant side effect of leading to the production of one-time-use disposable robots that are more expensive to recycle than to produce ;-) .
