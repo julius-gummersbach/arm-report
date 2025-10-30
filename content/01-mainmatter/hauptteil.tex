@@ -8,8 +8,8 @@ The authors identified precision to be the main challenge for continuum robot ar
 They claim that missing torsional twist-resistance is one of the key causes for this precision loss.
 Therefore, designing the robot, they focused on a construction with inherent passive torsional twist-resistance.
 For this, an origami construction was chosen.
-Origami constructions come with the advantage that they can be created by hand from sheets of readily-available materials like paper or plastic which makes their production low-cost.
-At the same time they are lightweight and compliant to a degree that can be adjusted by the folding technique used.
+Origami constructions come with the advantage that they can be created by hand from sheets of readily-available materials like paper or plastic, which makes their production low-cost.
+At the same time, they are lightweight and compliant to a degree that can be adjusted by the folding technique used.
 This approach for designing soft robots is not new, an overview of previous works can be found in\cite{rus_design_2018}, as the authors point out\cite{santoso_origami_2021}.
 
 \begin{figure}
@@ -19,14 +19,14 @@ This approach for designing soft robots is not new, an overview of previous work
     \label{fig:origami}
 \end{figure}
 
-For the body, the authors designed a custom modification of the ``Yoshimura'' origami pattern.
+For the body, the authors designed a custom modification of the ``Yoshimura'' origami pattern\cite{santoso_origami_2021}.
 A laser-cutter was used to cut the required shapes out of a\ \ac{pet} film, while perforating the lines along which the film was to be folded later.
 Pictures of the manufacturing process of the origami-tubes can be seen in\ \prettyref{fig:origami}
 The origami-tube is assembled by hand and connected to two end-plates, one of which contains a custom-build\ \ac{pcb} that receives instructions from the previous module (or the PC) and executes them, while also passing them on to the next module via wires that run through the center of the origami tube.
 The end-plate of one module can be secured to the\ \ac{pcb} of the next, which also transfers power and data via the aforementioned wires.
 On top of each\ \ac{pcb} sit three small electric motors which actuate cables that run through the walls of the origami tube and are secured to the end-plate.
-It by pulling on these cables, that the segments of the arm can be bent in any direction.
-For an even more in-depth look into the construction of the modules, the authors refer to the preceding work\cite{santoso_design_2017}.
+It is by pulling on these cables, that the segments of the arm can be bent in any direction.
+For an even more in-depth look into the construction of the modules, the authors refer to preceding work\cite{santoso_design_2017}.
 
 \begin{figure}
     \centering
@@ -49,7 +49,7 @@ The authors did, however, not mention any additional research concerning the lon
 
 The authors describe the inverse kinematics solution for continuum robots to be very complex because of the ``highly nonlinear nature of hyper-redundant continuum robots''\cite{santoso_origami_2021}.
 Because of this, they claim that there is ``no closed-form solution for the inverse kinematics of a multi-section continuum robot''\cite{santoso_origami_2021}.
-They build on previously conducted research on the topic\cite{neppalli_closed-form_2009,george_thuruthel_learning_2016,lakhal_inverse_2014,singh_performances_2017}, improving and combining different approaches to create an inverse kinematics solver using a damped least-squares jacobian.
+They build on previously conducted research on the topic\cite{neppalli_closed-form_2009,george_thuruthel_learning_2016,lakhal_inverse_2014,singh_performances_2017}, improving and combining different approaches to create an inverse kinematics solver using a damped least-squares Jacobian.
 
 Refering to\cite{godage_modal_2015}, for the forward kinematics, they calculated the arc length, bending angle and direction from the tendon lengths, which could then yield the end-plate position for the given segment.
 However, as\cite{godage_modal_2015} remarks as well, computing a Jacobian matrix via partial derivatives from this approach is very computationally intense.
@@ -67,12 +67,12 @@ These cost functions were used as additional criteria to find best of the applic
     \item change in tendon cable lengths
 \end{enumerate}
 
-After an in-depth analysis, measuring the computational speed and motion-smoothness of each cost function, the authors concluded that cost function $3$ was best suited, because it yielded by far the smoothest results while being just insignificantly slower to compute than 2.
+After an in-depth analysis, measuring the computational speed and motion-smoothness of each cost function, the authors concluded that cost function $3$ was best suited, because it yielded by far the smoothest results while being just insignificantly slower to compute than 2\cite{santoso_origami_2021}.
 
 
 \section{Feedback Control}\label{sec:feedback-control}
 
-Because the mathematical model of a robot is never perfect, and this is especially true for a soft-robot whose pose is significantly affected by a hand-assembled origami structure, a feedback-control mechanism was deemed to be imperative by the authors\cite{santoso_origami_2021}.
+Because the mathematical model of a robot is never perfect, and this is especially true for a soft-robot, whose pose is significantly affected by a hand-assembled origami structure, a feedback-control mechanism was deemed to be imperative by the authors\cite{santoso_origami_2021}.
 For this, they used an external OptiTrack\footnote{\href{https://optitrack.com}{https://optitrack.com}} system.
 This system tracks the position of small infra-red reflectors on the robot using specialized infra-red cameras that are mounted at fixed, known positions around the robot.
 The authors stress that this solution is only suited for a lab environment and would need to be replaced by an on-board pose tracking system, should the robot ever be deployed in the field.
