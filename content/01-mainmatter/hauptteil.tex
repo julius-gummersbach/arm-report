@@ -1,16 +1,13 @@
 % !TeX root = Thesis.tex
-\chapter{Main Matter}\label{ch:main-matter}
+\chapter{Technical Details}\label{ch:main-matter}
 
 
 \section{Construction of the Origami Robot}\label{sec:construction-of-the-origami-robot}
 
-The authors identified precision to be the main challenge for continuum robot arms in related work\cite{santoso_origami_2021}.
-They claim that missing torsional twist-resistance is one of the key causes for this precision loss.
-Therefore, designing the robot, they focused on a construction with inherent passive torsional twist-resistance.
-For this, an origami construction was chosen.
-Origami constructions come with the advantage that they can be created by hand from sheets of readily-available materials like paper or plastic, which makes their production low-cost.
-At the same time, they are lightweight and compliant to a degree that can be adjusted by the folding technique used.
-This approach for designing soft robots is not new, an overview of previous works can be found in\cite{rus_design_2018}, as the authors point out\cite{santoso_origami_2021}.
+In the paper\cite{santoso_origami_2021}, the authors present a continuum robot arm that consists of multiple modular segments.
+Each segment is made of two triangular plates connected through an accordion-like origami fold.
+The authors chose this technique of construction, because it tackles what they identified to be the main cause for reduced precision in related work: low torsional twist-resistance, that is resistance to twisting forces around the central axis of the arm.
+The origami-fold used provides this stiffness, while at the same time acting as a spring to drive the two end-plates apart, therefore enabling the robot arm to extend and contract.
 
 \begin{figure}
     \centering
@@ -19,7 +16,7 @@ This approach for designing soft robots is not new, an overview of previous work
     \label{fig:origami}
 \end{figure}
 
-For the body, the authors designed a custom modification of the ``Yoshimura'' origami pattern\cite{santoso_origami_2021}.
+For the origami-tube, the authors designed a custom modification of the ``Yoshimura'' origami pattern\cite{santoso_origami_2021}.
 A laser-cutter was used to cut the required shapes out of a\ \ac{pet} film, while perforating the lines along which the film was to be folded later.
 Pictures of the manufacturing process of the origami-tubes can be seen in\ \prettyref{fig:origami}
 The origami-tube is assembled by hand and connected to two end-plates, one of which contains a custom-build\ \ac{pcb} that receives instructions from the previous module (or the PC) and executes them, while also passing them on to the next module via wires that run through the center of the origami tube.
